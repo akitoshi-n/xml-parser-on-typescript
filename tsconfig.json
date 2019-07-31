@@ -1,0 +1,19 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES6",
+    "types": ["node"],
+    "noImplicitAny": true,
+    "removeComments": false,
+  },
+  "files": [
+    "index.ts",
+  ],
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
