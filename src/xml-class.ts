@@ -1,0 +1,54 @@
+import { findFirstTag, extractTagName } from './helper';
+
+export default class XmlClass {
+  xml: string;
+
+  constructor(xml: string) {
+    this.xml = xml;
+  }
+
+  get firstBlock() {
+    if (this.hasTag() === false) {
+      return '';
+    }
+    const start = this.xml.search(new RegExp(this._firstTag()));
+    const end = this.xml.search(new RegExp(this._firstCloseTag())) + this._firstCloseTag().length;
+    return this.xml.slice(start, end)
+  }
+
+  get innerXml() {
+    if (this.hasTag() === false) {
+      return '';
+    }
+    const start = this.xml.search(new RegExp(this._firstTag())) + this._firstTag().length;
+    const end = this.xml.search(new RegExp(this._firstCloseTag()));
+    return this.xml.slice(start, end);
+  }
+
+  get firstTagName() {
+    return this._firstTagName();
+  }
+
+  hasTag() {
+    const tag = this._firstTag();
+    return tag.length > 0;
+  }
+
+  _firstTagName() {
+    if (this.hasTag() === false) {
+      return '';
+    }
+    return extractTagName(this._firstTag())
+  }
+
+  _firstTag() {
+    return findFirstTag(this.xml);
+  }
+
+  _firstCloseTag() {
+    if (this.hasTag() === false) {
+      return '';
+    }
+    return `</${this._firstTagName()}>`
+  }
+}
