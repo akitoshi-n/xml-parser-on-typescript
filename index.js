@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const parser_1 = require("./src/parser/");
+const restore_1 = require("./src/restore/");
 const data = fs.readFileSync('sample.xml', 'utf-8');
 const parsedData = parser_1.xmlParser(data);
 console.log(JSON.stringify(parsedData));
+const restoredData = restore_1.xmlRestore(parsedData);
+console.log(restoredData);
