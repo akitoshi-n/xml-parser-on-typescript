@@ -20,7 +20,6 @@ const parser: Parser = xmlArray => {
   xmlArray.map((xml: string, index) => {
     const xmlInstance = new XmlClass(xml);
     xmlArray[index] = { tag: xmlInstance.firstTagName, content: xmlInstance.innerXml }
-
     const devidedXml = divider(xmlArray[index].content);
     if (devidedXml.length === 0) {
       return;

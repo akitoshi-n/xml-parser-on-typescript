@@ -24,6 +24,9 @@ class XmlClass {
     get firstTagName() {
         return this._firstTagName();
     }
+    get firstTagAttributes() {
+        return helper_1.extractTagAttributes(this._firstTag());
+    }
     hasTag() {
         const tag = this._firstTag();
         return tag.length > 0;

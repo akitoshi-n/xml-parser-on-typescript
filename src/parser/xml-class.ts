@@ -1,4 +1,4 @@
-import { findFirstTag, extractTagName } from './helper';
+import { findFirstTag, extractTagName, extractTagAttributes } from './helper';
 
 export default class XmlClass {
   xml: string;
@@ -27,6 +27,10 @@ export default class XmlClass {
 
   get firstTagName() {
     return this._firstTagName();
+  }
+
+  get firstTagAttributes() {
+    return extractTagAttributes(this._firstTag())
   }
 
   hasTag() {
