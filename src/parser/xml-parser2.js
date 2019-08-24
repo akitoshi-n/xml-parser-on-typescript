@@ -4,7 +4,7 @@ const xml_class_1 = require("./xml-class");
 exports.xmlParser = (xml) => {
     const result = divider(xml);
     if (result.length === 0) {
-        return [{ tag: '', content: xml }];
+        return [{ tag: '', attributes: {}, content: xml }];
     }
     parser(result);
     return result;
@@ -12,7 +12,11 @@ exports.xmlParser = (xml) => {
 const parser = xmlArray => {
     xmlArray.map((xml, index) => {
         const xmlInstance = new xml_class_1.default(xml);
-        xmlArray[index] = { tag: xmlInstance.firstTagName, content: xmlInstance.innerXml };
+        xmlArray[index] = {
+            tag: xmlInstance.firstTagName,
+            attributes: xmlInstance.firstTagAttributes,
+            content: xmlInstance.innerXml
+        };
         const devidedXml = divider(xmlArray[index].content);
         if (devidedXml.length === 0) {
             return;

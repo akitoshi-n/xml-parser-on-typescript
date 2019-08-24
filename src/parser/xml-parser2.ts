@@ -6,7 +6,7 @@ interface XmlParser {
 export const xmlParser: XmlParser = (xml) => {
   const result = divider(xml);
   if (result.length === 0) {
-    return [{ tag: '', content: xml }];
+    return [{ tag: '', attributes: {}, content: xml }];
   }
   parser(result);
   return result;
@@ -19,7 +19,11 @@ interface Parser {
 const parser: Parser = xmlArray => {
   xmlArray.map((xml: string, index) => {
     const xmlInstance = new XmlClass(xml);
-    xmlArray[index] = { tag: xmlInstance.firstTagName, content: xmlInstance.innerXml }
+    xmlArray[index] = {
+      tag: xmlInstance.firstTagName,
+      attributes: xmlInstance.firstTagAttributes,
+      content: xmlInstance.innerXml
+    }
     const devidedXml = divider(xmlArray[index].content);
     if (devidedXml.length === 0) {
       return;
