@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
+const xml_parser_1 = require("./src/xml-parser");
 const data = fs.readFileSync('sample.xml', 'utf-8');
-console.log(data);
+const result = xml_parser_1.xmlParser(data);
+console.log(JSON.stringify(result));
