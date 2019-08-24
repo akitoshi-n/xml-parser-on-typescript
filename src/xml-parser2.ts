@@ -1,7 +1,7 @@
 import XmlClass from './xml-class';
 
 interface XmlParser {
-  (xml: string): Array<any>
+  (xml: string): Array<any> //FIXME: any を使わない方法がわからない
 }
 export const xmlParser: XmlParser = (xml) => {
   const result = divider(xml);
@@ -14,7 +14,7 @@ export const xmlParser: XmlParser = (xml) => {
 
 // 再帰的にパースする
 interface Parser {
-  (xmlArray: Array<any>): void
+  (xmlArray: Array<any>): void //FIXME: any を使わない方法がわからない
 }
 const parser: Parser = xmlArray => {
   xmlArray.map((xml: string, index) => {
