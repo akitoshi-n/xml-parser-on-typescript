@@ -5,6 +5,6 @@ const parser_1 = require("./src/parser/");
 const restore_1 = require("./src/restore/");
 const data = fs.readFileSync('sample.xml', 'utf-8');
 const parsedData = parser_1.xmlParser(data);
-console.log(JSON.stringify(parsedData));
+fs.writeFileSync('parsed.json', JSON.stringify(parsedData));
 const restoredData = restore_1.xmlRestore(parsedData);
-console.log(restoredData);
+fs.writeFileSync('exported.xml', restoredData);

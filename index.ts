@@ -4,7 +4,7 @@ import { xmlRestore } from './src/restore/';
 
 const data = fs.readFileSync('sample.xml', 'utf-8');
 const parsedData = xmlParser(data);
-console.log(JSON.stringify(parsedData));
+fs.writeFileSync('parsed.json', JSON.stringify(parsedData));
 
-const restoredData = xmlRestore(parsedData)
-console.log(restoredData);
+const restoredData = xmlRestore(parsedData);
+fs.writeFileSync('exported.xml', restoredData);
