@@ -1,3 +1,5 @@
+// deprecation
+// use xml-parser2
 import { findFirstTag, extractTagName,  getTagCloseStartPosition, getTagCloseEndPosition } from './helper';
 
 export const xmlParser = (data: any) => {

@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// deprecation
+// use xml-parser2
 const helper_1 = require("./helper");
 exports.xmlParser = (data) => {
     data = divider(data);
